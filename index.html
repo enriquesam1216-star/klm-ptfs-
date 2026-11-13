@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KLM Royal Dutch Airlines – PTFS</title>
+<style>
+:root{--bg:#eef4f9;--sf:#fff;--tx:#0b1f33;--mu:#55687c;--br:#00a1de;--nv:#0a2e5c;--hd:#0a2e5c;--ln:#d5e1ec;--ok:#1f9d55;--no:#c0392b;--tg:#dff3fb;--tgt:#05648a;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08131f;--sf:#10202f;--tx:#e6eef6;--mu:#93a7bb;--hd:#7fd0f5;--ln:#223548;--tg:#12384b;--tgt:#8fdcff;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#08131f;--sf:#10202f;--tx:#e6eef6;--mu:#93a7bb;--hd:#7fd0f5;--ln:#223548;--tg:#12384b;--tgt:#8fdcff;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--nv);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nv);color:#fff;display:flex;align-items:center;gap:16px;padding:12px 16px}
+.logo{font-weight:800;letter-spacing:.1em;background:var(--br);padding:4px 10px;border-radius:4px;color:#fff;text-decoration:none}
+nav{display:flex;gap:16px;overflow-x:auto;white-space:nowrap;margin-left:auto;font-size:14px}
+nav a{color:#fff;text-decoration:none;opacity:.9}
+.wrap{max-width:1000px;margin:0 auto}
+.hero{background:var(--nv);color:#fff;padding:44px 16px 64px;background-image:linear-gradient(180deg,rgba(0,161,222,.25),transparent 70%)}
+h1{font-size:clamp(30px,7vw,52px);line-height:1.1;margin:0 0 10px;font-weight:800;letter-spacing:-.02em}
+.hero p{margin:0 0 24px;max-width:520px;opacity:.88}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:16px}
+.search{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));color:var(--tx);align-items:end}
+label{display:block;font-size:13px;font-weight:600;color:var(--mu);margin-bottom:4px}
+select,input{width:100%;padding:11px;border:1px solid var(--ln);border-radius:6px;font:inherit;background:var(--sf);color:var(--tx)}
+button{font:inherit;cursor:pointer;border:0;border-radius:6px;padding:11px 18px;background:var(--br);color:#fff;font-weight:700}
+button.alt{background:transparent;color:var(--hd);border:1px solid var(--br);padding:8px 14px;width:100%}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--br);outline-offset:2px}
+section{padding:40px 16px}
+h2{margin:0 0 6px;color:var(--hd);font-size:26px}
+.lead{margin:0 0 20px;color:var(--mu)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.pass{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.top{padding:16px}
+.codes{display:flex;align-items:center;gap:10px;font-size:28px;font-weight:800;color:var(--hd)}
+.codes i{flex:1;border-top:2px dashed var(--br);position:relative;height:0}
+.codes i::after{content:"✈";position:absolute;left:50%;top:-14px;transform:translateX(-50%);background:var(--sf);padding:0 6px;font-size:16px;color:var(--br);font-style:normal}
+.sub{color:var(--mu);font-size:14px}
+.stub{border-top:2px dashed var(--ln);padding:14px 16px;margin-top:auto;position:relative}
+.stub::before,.stub::after{content:"";position:absolute;top:-9px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:1px solid var(--ln)}
+.stub::before{left:-9px}.stub::after{right:-9px}
+.row{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
+.bar{height:8px;background:var(--ln);border-radius:4px;overflow:hidden;margin:4px 0 10px}
+.bar b{display:block;height:100%;background:var(--ok)}
+.bar b.low{background:#d97706}.bar b.zero{width:0}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:580px}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--ln);font-size:14px}
+th{color:var(--mu);font-weight:600}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--tg);color:var(--tgt)}
+.tag.no{background:rgba(192,57,43,.15);color:var(--no)}
+.form{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.form .full{grid-column:1/-1}
+#msg{margin-top:14px;padding:14px;border-radius:8px;background:var(--tg);color:var(--tgt);font-weight:600}
+#msg.err{background:rgba(192,57,43,.15);color:var(--no)}
+.dest{border-left:4px solid var(--br)}
+.dest b{font-size:22px;color:var(--hd)}
+footer{background:var(--nv);color:#fff;padding:28px 16px;font-size:14px}
+footer p{margin:0 0 6px;opacity:.85}
+.tbl button.alt{width:auto}.tbl input{padding:8px;min-width:80px}h3{color:var(--hd);margin:24px 0 10px}textarea{width:100%;padding:11px;border:1px solid var(--ln);border-radius:6px;font:inherit;background:var(--sf);color:var(--tx);margin-bottom:10px;resize:vertical}
+.vsec{padding:40px 16px}body.v .hero,body.v section{display:none}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.calh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.calh button{width:auto}
+.day{aspect-ratio:1;min-height:46px;border-radius:8px;border:1px solid var(--ln);background:var(--sf);color:var(--tx);padding:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:400}
+.day small{font-size:11px}.day.off{opacity:.35;pointer-events:none}
+.day.lo{background:rgba(31,157,85,.18)}.day.mid{background:rgba(217,119,6,.22)}.day.hi{background:rgba(192,57,43,.25)}.day.full{background:var(--ln)}.day.sel{outline:3px solid var(--br)}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--mu);margin-top:12px}
+.sq{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}.sq.lo{background:rgba(31,157,85,.5)}.sq.mid{background:rgba(217,119,6,.55)}.sq.hi{background:rgba(192,57,43,.55)}.sq.full{background:var(--ln)}
+.rcard{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center;margin-bottom:12px}
+.pr{display:grid;gap:6px;min-width:210px;font-size:14px}.pr b{font-size:18px;color:var(--hd)}
+#carga{position:fixed;inset:0;z-index:50;background:var(--nv);color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}#carga[hidden]{display:none}
+.cbox{width:min(360px,100%)}.cbox b{font-size:20px}
+.pista{position:relative;height:40px;margin-bottom:18px;overflow:hidden}.pista i{position:absolute;left:0;right:0;top:22px;border-top:2px dashed rgba(255,255,255,.4)}
+.avion{position:absolute;top:2px;left:-10%;font-size:30px;line-height:1;animation:vuela 1.6s linear infinite}
+.prog{height:6px;background:rgba(255,255,255,.25);border-radius:3px;overflow:hidden;margin-top:20px}.prog u{display:block;height:100%;width:0;background:var(--br);animation:llena 5s linear forwards}
+@keyframes vuela{to{left:100%}}@keyframes llena{to{width:100%}}
+@media (prefers-reduced-motion:reduce){.avion{animation:none;left:calc(50% - 15px)}}
+.ld{margin:0 0 20px;color:var(--mu)}.h2{margin:0 0 6px;color:var(--hd);font-size:26px;font-weight:700}
+.pg,.hero,.hm{display:none}
+body[data-p="home"] .hero,body[data-p="home"] .hm{display:block}
+body[data-p="disponibilidad"] #disponibilidad,body[data-p="programados"] #programados,body[data-p="reservar"] #reservar,body[data-p="flota"] #flota,body[data-p="info"] #info,body[data-p="admin"] #admin{display:block}
+#admin[hidden]{display:none}
+:root{--gl:rgba(255,255,255,.62);--sh:rgba(255,255,255,.55);--gi:rgba(255,255,255,.55);--gb:rgba(255,255,255,.4);--gbd:rgba(255,255,255,.75);--gsh:0 10px 32px rgba(10,46,92,.14);--b1:rgba(0,161,222,.30);--b2:rgba(110,160,255,.28);--b3:rgba(0,200,200,.20)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--gl:rgba(20,40,60,.55);--sh:rgba(255,255,255,.10);--gi:rgba(255,255,255,.07);--gb:rgba(255,255,255,.08);--gbd:rgba(255,255,255,.16);--gsh:0 10px 32px rgba(0,0,0,.4);--b1:rgba(0,161,222,.22);--b2:rgba(70,100,220,.25);--b3:rgba(0,150,160,.18)}}
+:root[data-theme="dark"]{--gl:rgba(20,40,60,.55);--sh:rgba(255,255,255,.10);--gi:rgba(255,255,255,.07);--gb:rgba(255,255,255,.08);--gbd:rgba(255,255,255,.16);--gsh:0 10px 32px rgba(0,0,0,.4);--b1:rgba(0,161,222,.22);--b2:rgba(70,100,220,.25);--b3:rgba(0,150,160,.18)}
+body{background:radial-gradient(60% 45% at 8% 0%,var(--b1),transparent 70%),radial-gradient(50% 40% at 100% 35%,var(--b2),transparent 70%),radial-gradient(60% 45% at 15% 100%,var(--b3),transparent 70%),var(--bg);background-attachment:fixed}
+.card{border-radius:26px;border:1px solid var(--gbd);background:linear-gradient(135deg,var(--sh),transparent 55%),var(--gl);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);box-shadow:inset 0 1px 1px rgba(255,255,255,.55),var(--gsh)}
+.pass{border-radius:28px}.stub::before,.stub::after{display:none}
+select,input,textarea{border-radius:16px;background:var(--gi);border:1px solid var(--gbd)}
+button{border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.35),transparent),var(--br);box-shadow:inset 0 1px 1px rgba(255,255,255,.6),0 6px 16px rgba(0,161,222,.35)}
+button.alt{background:var(--gb);border:1px solid var(--gbd);box-shadow:inset 0 1px 1px rgba(255,255,255,.4)}
+button:disabled{box-shadow:none}
+.logo{border-radius:999px;padding:4px 14px}
+header,body::before{background:rgba(10,46,92,.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6)}
+header{border-radius:0 0 24px 24px;box-shadow:inset 0 -1px 1px rgba(255,255,255,.25),0 6px 20px rgba(0,0,0,.18)}
+nav a{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.12)}
+.hero{border-radius:0 0 40px 40px;background:radial-gradient(70% 90% at 15% 0%,rgba(0,161,222,.55),transparent 70%),radial-gradient(60% 80% at 100% 100%,rgba(70,120,255,.4),transparent 70%),var(--nv)}
+.day{border-radius:16px;background:var(--gi);border:1px solid var(--gbd);box-shadow:none}
+#msg,#amsg{border-radius:18px}
+footer{border-radius:32px 32px 0 0}
+#carga{background:radial-gradient(circle at 20% 20%,#1a6fc0,transparent 55%),radial-gradient(circle at 80% 80%,#00a1de,transparent 50%),var(--nv)}
+.cbox{padding:28px;border-radius:32px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:inset 0 1px 1px rgba(255,255,255,.5),0 20px 50px rgba(0,0,0,.3)}
+@media (prefers-reduced-transparency:reduce){.card,header,body::before,footer,.cbox{-webkit-backdrop-filter:none;backdrop-filter:none}.card{background:var(--sf)}header,body::before{background:var(--nv)}}
+#amsg{margin:0 0 14px;padding:12px;border-radius:8px;background:var(--tg);color:var(--tgt);font-weight:600}#amsg.err{background:rgba(192,57,43,.15);color:var(--no)}
+</style>
+</head>
+<body>
+<header>
+<a class="logo" href="#top">KLM</a>
+<nav><a href="#top">Inicio</a><a href="#ofertas">Ofertas</a><a href="#destinos">Destinos</a><a href="#codigos">Códigos</a><a href="#disponibilidad">Disponibilidad</a><a href="#programados">Programados</a><a href="#reservar">Reservar</a><a href="#flota">Flota</a><a href="#info">Información</a><a id="nadm" href="#admin" hidden>Admin</a></nav>
+</header>
+
+<div class="hero" id="top"><div class="wrap">
+<h1>Vuela con KLM Royal Dutch Airlines en PTFS</h1>
+<p>Busca tu vuelo, mira cuántos asientos quedan y reserva en menos de un minuto.</p>
+<div class="card search">
+<div><label for="fo">Origen</label><select id="fo"></select></div>
+<div><label for="fd">Destino</label><select id="fd"></select></div>
+<div><label for="ff">Fecha</label><input id="ff" type="date"></div>
+<button id="buscar" type="button">Buscar vuelos</button>
+</div>
+</div></div>
+
+<div id="carga" hidden role="status" aria-live="polite"><div class="cbox"><div class="pista"><i></i><span class="avion">✈</span></div><b>Buscando vuelos</b><div class="sub" style="color:#fff;opacity:.8">Comprobando disponibilidad y precios</div><div class="prog"><u></u></div></div></div>
+
+<div id="resultados" hidden><div class="vsec"><div class="wrap">
+<p><a href="#top">Volver al inicio</a></p>
+<h2>Vuelos disponibles</h2>
+<p class="lead">El precio sube cuando se llenan los asientos. El calendario muestra la demanda real de cada día.</p>
+<div class="card search">
+<div><label for="vo">Origen</label><select id="vo"></select></div>
+<div><label for="vd">Destino</label><select id="vd"></select></div>
+<div><label for="vf">Fecha</label><input id="vf" type="date"></div>
+<button class="alt" id="vall" type="button">Ver todas las fechas</button>
+</div>
+<div class="card" style="margin:14px 0">
+<div class="calh"><button class="alt" id="cprev" type="button">Mes anterior</button><b id="calt"></b><button class="alt" id="cnext" type="button">Mes siguiente</button></div>
+<div class="cal" id="cal"></div>
+<div class="leg"><span><i class="sq lo"></i>Demanda baja</span><span><i class="sq mid"></i>Demanda media</span><span><i class="sq hi"></i>Demanda alta</span><span><i class="sq full"></i>Completo</span></div>
+</div>
+<div id="res"></div>
+</div></div></div>
+
+<section id="disponibilidad" class="pg"><div class="wrap">
+<h2>Disponibilidad</h2>
+<p class="lead">Asientos libres en cada vuelo, actualizados al momento.</p>
+<div class="grid" id="disp"></div>
+</div></section>
+
+<section id="programados" class="pg"><div class="wrap">
+<h2>Vuelos programados</h2>
+<p class="lead">Todos los vuelos de los próximos días. Horario del servidor de PTFS.</p>
+<div class="card tbl"><table>
+<thead><tr><th>Vuelo</th><th>Ruta</th><th>Fecha</th><th>Hora</th><th>Avión</th><th>Estado</th></tr></thead>
+<tbody id="prog"></tbody></table></div>
+</div></section>
+
+<section id="reservar" class="pg"><div class="wrap">
+<h2>Reservar vuelo</h2>
+<p class="lead">Rellena tus datos y recibirás la confirmación en nuestro Discord.</p>
+<form class="card form" id="f">
+<div><label for="rb">Usuario de Roblox</label><input id="rb" required maxlength="40" autocomplete="off"></div>
+<div><label for="dc">Usuario de Discord</label><input id="dc" required maxlength="40" autocomplete="off"></div>
+<div><label for="vuelo">Vuelo</label><select id="vuelo" required></select></div>
+<div><label for="clase">Clase</label><select id="clase"><option>Economy</option><option>Business</option></select></div>
+<div><label for="pc">Código promocional (opcional)</label><input id="pc" maxlength="30" autocomplete="off"></div>
+<button class="full" id="enviar" type="submit">Confirmar reserva</button>
+</form>
+<div id="msg" hidden role="status"></div>
+</div></section>
+
+<section id="destinos" class="hm"><div class="wrap">
+<h2>Destinos</h2>
+<p class="lead">Los aeropuertos a los que volamos.</p>
+<div class="grid" id="dest"></div>
+</div></section>
+
+<section id="ofertas" class="hm"><div class="wrap">
+<div class="h2">Ofertas</div>
+<p class="ld">Vuelos con descuento por tiempo limitado.</p>
+<div class="grid" id="ofe"></div>
+</div></section>
+
+<section id="codigos" class="hm"><div class="wrap">
+<div class="h2">Códigos promocionales</div>
+<p class="ld">Escribe el código al reservar y ahorra en tu vuelo. Cada código caduca en la fecha indicada.</p>
+<div class="grid" id="cods"></div>
+</div></section>
+
+<section id="flota" class="pg"><div class="wrap">
+<h2>Nuestra flota</h2>
+<p class="lead">Aviones que usamos en nuestros vuelos.</p>
+<div class="grid" id="flota-g"></div>
+</div></section>
+
+<section id="info" class="pg"><div class="wrap">
+<h2>Información</h2>
+<div class="grid">
+<div class="card"><b>Cómo reservar</b><p class="sub">Elige un vuelo con asientos libres, escribe tus usuarios y confirma. Guarda tu código de reserva.</p></div>
+<div class="card"><b>Check-in</b><p class="sub">Entra a nuestro Discord 15 minutos antes de la salida y muestra tu código al personal.</p></div>
+<div class="card"><b>Normas a bordo</b><p class="sub">Respeta al personal y a los pasajeros, sigue las instrucciones de la tripulación y no estorbes en pista.</p></div>
+</div>
+</div></section>
+
+<section id="admin" class="pg" hidden><div class="wrap">
+<h2>Panel de administración</h2>
+<p class="lead">Solo lo ves tú y los editores. Los cambios se guardan al instante para todos.</p>
+<p id="anote" class="lead" hidden>Aún no hay vuelos guardados. Pulsa «Cargar vuelos de ejemplo» para empezar a editarlos.</p>
+<div class="card tbl"><table>
+<thead><tr><th>Vuelo</th><th>Origen</th><th>Destino</th><th>Fecha</th><th>Hora</th><th>Avión</th><th>Asientos Economy</th><th>Asientos Business</th><th>Precio Economy</th><th>Precio Business</th><th>Oferta (%)</th><th></th></tr></thead>
+<tbody id="av"></tbody></table></div>
+<p><button id="nuevo" type="button">Añadir vuelo</button> <button class="alt" id="demo" type="button">Cargar vuelos de ejemplo</button></p>
+<div id="amsg" hidden role="status"></div>
+<h3>Códigos promocionales</h3>
+<div class="card tbl"><table>
+<thead><tr><th>Código</th><th>Descuento (%)</th><th>Válido hasta</th><th>Estado</th><th></th></tr></thead>
+<tbody id="ac"></tbody></table></div>
+<p><button id="ncod" type="button">Añadir código</button></p>
+<h3>Textos de la web</h3>
+<div class="card" id="tx"></div>
+<p><button id="tsave" type="button">Guardar textos</button> <button class="alt" id="treset" type="button">Restaurar originales</button></p>
+<h3>Reservas</h3>
+<div class="card tbl"><table>
+<thead><tr><th>Código</th><th>Roblox</th><th>Vuelo</th><th>Clase</th><th></th></tr></thead>
+<tbody id="ar"></tbody></table></div>
+</div></section>
+
+<footer><div class="wrap">
+<p><b>KLM Royal Dutch Airlines</b> en PTFS</p>
+<p>Aerolínea virtual de Roblox. No está afiliada a la aerolínea real.</p>
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>"&#"+c.charCodeAt(0)+";");
+const hoy=n=>new Date(Date.now()+n*864e5).toISOString().slice(0,10);
+const DEF=()=>[
+["KL101","Greater Rockford (IRFD)","Larnaca (ILAR)",0,"18:00","B737-800",28,8],
+["KL102","Larnaca (ILAR)","Greater Rockford (IRFD)",0,"20:30","B737-800",28,8],
+["KL203","Greater Rockford (IRFD)","Perth (IPPH)",1,"17:00","B777-300ER",60,12],
+["KL204","Perth (IPPH)","Greater Rockford (IRFD)",1,"21:00","B777-300ER",60,12],
+["KL310","Greater Rockford (IRFD)","Tokyo (ITKO)",2,"19:00","A330-300",50,10],
+["KL311","Tokyo (ITKO)","Greater Rockford (IRFD)",3,"19:00","A330-300",50,10],
+["KL420","Greater Rockford (IRFD)","Saint Barthélemy (IBTH)",3,"16:00","Embraer 190",90,10],
+["KL530","Greater Rockford (IRFD)","Sauthamptona (ISAU)",5,"20:00","Embraer 190",90,10]
+].map(([id,de,a,d,h,av,ce,cb])=>({id,de,a,fecha:hoy(d),h,av,ce,cb,pe:ce>=60?180:ce>=50?150:100,pb:ce>=60?500:ce>=50?420:300,of:["KL420","KL530"].includes(id)?15:0}));
+const cod=s=>(String(s).match(/\(([^)]+)\)/)||[0,String(s).slice(0,4).toUpperCase()])[1];
+const fmt=i=>new Date(i+"T12:00:00").toLocaleDateString("es-ES",{weekday:"short",day:"numeric",month:"short"});
+const cmp=(x,y)=>(x.fecha+x.h).localeCompare(y.fecha+y.h);
+let V=DEF(),R=[],db=null,adm=false,demo=true;
+const lib=(f,k)=>(k==="e"?f.ce:f.cb)-R.filter(r=>r.vuelo===f.id&&r.clase===k).length;
+const lleno=f=>lib(f,"e")+lib(f,"b")<=0;
+const bar=(n,v,c)=>{if(c<=0)return"";v=Math.max(v,0);const p=Math.round(v/c*100);return `<div class="row"><span>${n}</span><span>${v?v+" libres":"Completo"}</span></div><div class="bar"><b class="${v?(p<25?"low":""):"zero"}" style="width:${p}%"></b></div>`};
+const ports=()=>[...new Set(V.flatMap(f=>[f.de,f.a]))].filter(Boolean).sort();
+function opts(s){const c=s.value;s.innerHTML='<option value="">Todos</option>'+ports().map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join("");s.value=c}
+const rowH=f=>`<tr data-id="${esc(f.id)}">${[["id",""],["de",""],["a",""],["fecha","date"],["h","time"],["av",""],["ce","number"],["cb","number"],["pe","number"],["pb","number"],["of","number"]].map(([k,t])=>`<td><input data-k="${k}" ${t?`type="${t}"`:""} ${t==="number"?'min="0" style="width:72px"':""} value="${esc(f[k])}"></td>`).join("")}<td style="white-space:nowrap"><button class="alt" data-act="save">Guardar</button> <button class="alt" data-act="del">Borrar</button></td></tr>`;
+const typing=el=>document.activeElement&&document.activeElement.tagName==="INPUT"&&el.contains(document.activeElement);
+function render(){
+ opts($("fo"));opts($("fd"));
+ const o=$("fo").value,d=$("fd").value;
+ const l=V.filter(f=>(!o||f.de===o)&&(!d||f.a===d));
+ $("disp").innerHTML=l.length?l.map(f=>`<div class="card pass"><div class="top"><div class="sub">${esc(f.id)} en ${esc(f.av)}</div><div class="codes"><span>${esc(cod(f.de))}</span><i></i><span>${esc(cod(f.a))}</span></div><div class="sub">${esc(f.de)} a ${esc(f.a)}<br>${fmt(f.fecha)}, ${esc(f.h)}</div></div><div class="stub">${bar("Economy",lib(f,"e"),f.ce)}${bar("Business",lib(f,"b"),f.cb)}<button class="alt" data-id="${esc(f.id)}" ${lleno(f)?"disabled":""}>${lleno(f)?"Vuelo completo":"Reservar este vuelo"}</button></div></div>`).join(""):'<div class="card">No hay vuelos para esa ruta. Prueba con otro origen o destino.</div>';
+ $("prog").innerHTML=V.map(f=>`<tr><td><b>${esc(f.id)}</b></td><td>${esc(f.de)} a ${esc(f.a)}</td><td>${fmt(f.fecha)}</td><td>${esc(f.h)}</td><td>${esc(f.av)}</td><td><span class="tag ${lleno(f)?"no":""}">${lleno(f)?"Completo":f.fecha===hoy(0)?"Embarque hoy":"Abierto"}</span></td></tr>`).join("");
+ const cur=$("vuelo").value;
+ $("vuelo").innerHTML=V.filter(f=>!lleno(f)).map(f=>`<option value="${esc(f.id)}">${esc(f.id)}: ${esc(f.de)} a ${esc(f.a)}, ${fmt(f.fecha)} ${esc(f.h)}</option>`).join("");
+ if(cur)$("vuelo").value=cur;
+ $("dest").innerHTML=ports().map(p=>{const n=V.filter(f=>f.de===p||f.a===p).length;return `<div class="card dest"><b>${esc(cod(p))}</b><div>${esc(p)}</div><div class="sub">${n} ${n===1?"vuelo programado":"vuelos programados"}</div></div>`}).join("");
+ const FLOTA=["B747-400","B777-300ER","B777-200ER","B787-9 Dreamliner","B787-10 Dreamliner","B737-800","B737 MAX 8","A350-900","A330-200","A330-300","Embraer 190"];
+ $("flota-g").innerHTML=FLOTA.map(n=>{const c=V.filter(f=>String(f.av).toLowerCase()===n.toLowerCase()).length;return `<div class="card"><b>${n}</b><div class="sub">${c?c+(c===1?" vuelo programado":" vuelos programados"):"Sin vuelos programados"}</div></div>`}).join("");
+ const ofs=V.filter(f=>(+f.of||0)>0&&!lleno(f));
+ $("ofe").innerHTML=ofs.length?ofs.map(f=>`<div class="card"><div class="sub">${esc(f.id)} en ${esc(f.av)}</div><div><b style="font-size:20px">${esc(cod(f.de))} a ${esc(cod(f.a))}</b> <span class="tag">-${+f.of}%</span></div><div class="sub">${esc(f.de)} a ${esc(f.a)}<br>${fmt(f.fecha)}, ${esc(f.h)}</div><div style="margin:10px 0"><b style="font-size:20px;color:var(--hd)">Desde ${MON}${desde(f)}</b></div><button class="alt" data-id="${esc(f.id)}">Reservar este vuelo</button></div>`).join(""):'<div class="card">Ahora mismo no hay ofertas. Vuelve pronto.</div>';
+ const cs=C.filter(c=>c.hasta>=hoy(0)).sort((a,b)=>a.hasta.localeCompare(b.hasta));
+ $("cods").innerHTML=cs.length?cs.map(c=>`<div class="card dest"><b>${esc(c.codigo)}</b><div>${+c.pct}% de descuento</div><div class="sub">Válido hasta ${fmt(c.hasta)}</div><button class="alt" data-code="${esc(c.codigo)}" style="margin-top:10px">Usar este código</button></div>`).join(""):'<div class="card">Ahora mismo no hay códigos activos.</div>';
+ renderV();
+ const show=adm&&!!db;$("admin").hidden=!show;$("nadm").hidden=!show;
+ if(show){
+  $("anote").hidden=!demo;
+  if(!$("tx").children.length)buildT();
+  if(!typing($("av")))$("av").innerHTML=V.map(rowH).join("");
+  if(!typing($("ac")))$("ac").innerHTML=C.map(codH).join("");
+  $("ar").innerHTML=R.slice().sort((a,b)=>b.ts-a.ts).map(r=>`<tr><td>${esc(r.codigo)}</td><td>${esc(r.roblox)}</td><td>${esc(r.vuelo)}</td><td>${r.clase==="b"?"Business":"Economy"}</td><td><button class="alt" data-c="${esc(r.codigo)}">Cancelar</button></td></tr>`).join("")||'<tr><td colspan="5">Aún no hay reservas.</td></tr>';
+ }
+}
+const msg=(t,err)=>{const m=$("msg");m.hidden=false;m.className=err?"err":"";m.textContent=t};
+const amsg=(t,err)=>{const m=$("amsg");m.hidden=!t;m.className=err?"err":"";m.textContent=t};
+const MON="$";
+const tk=(f,k)=>R.filter(r=>r.vuelo===f.id&&r.clase===k).length;
+const cap=(f,k)=>k==="e"?f.ce:f.cb;
+const precio=(f,k)=>{const c=cap(f,k);if(c<=0)return null;const b=+(k==="e"?f.pe:f.pb)||(k==="e"?100:300);return Math.round(b*(1+0.8*Math.pow(Math.min(1,tk(f,k)/c),2))*(1-Math.min(90,+f.of||0)/100))};
+const ocu=f=>{const c=f.ce+f.cb;return c>0?(tk(f,"e")+tk(f,"b"))/c:1};
+const dem=o=>o>=1?["Completo","full"]:o>=.75?["Demanda alta","hi"]:o>=.4?["Demanda media","mid"]:["Demanda baja","lo"];
+const desde=f=>{const l=["e","b"].filter(k=>lib(f,k)>0).map(k=>precio(f,k));return l.length?Math.min(...l):null};
+const ymd=(y,m,d)=>y+"-"+String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");
+const now=new Date();
+let S={o:"",d:"",f:"",y:now.getFullYear(),m:now.getMonth()};
+let cargando=false,C=[];
+function renderV(){
+ if(!document.body.classList.contains("v"))return;
+ [["vo","o"],["vd","d"]].forEach(([id,k])=>{$(id).innerHTML='<option value="">Todos</option>'+ports().map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join("");$(id).value=S[k]});
+ $("vf").value=S.f;
+ const fl=V.filter(f=>(!S.o||f.de===S.o)&&(!S.d||f.a===S.d));
+ const nd=new Date(S.y,S.m+1,0).getDate(),off=(new Date(S.y,S.m,1).getDay()+6)%7;
+ let h="";for(let i=0;i<off;i++)h+="<span></span>";
+ for(let d=1;d<=nd;d++){const iso=ymd(S.y,S.m,d),df=fl.filter(f=>f.fecha===iso);
+  if(!df.length){h+=`<span class="day off">${d}</span>`;continue}
+  const o=df.reduce((a,f)=>a+ocu(f),0)/df.length,ps=df.map(desde).filter(x=>x!=null),c=dem(o)[1];
+  h+=`<button class="day ${c}${iso===S.f?" sel":""}" data-d="${iso}" type="button"><b>${d}</b><small>${ps.length?MON+Math.min(...ps):"Completo"}</small></button>`}
+ $("calt").textContent=new Date(S.y,S.m,1).toLocaleDateString("es-ES",{month:"long",year:"numeric"});
+ $("cal").innerHTML=h;
+ const l=fl.filter(f=>!S.f||f.fecha===S.f).sort(cmp);
+ const pp=(f,k)=>{const p=precio(f,k);return p==null||lib(f,k)<1?"Agotado":MON+p+" ("+lib(f,k)+" libres)"};
+ $("res").innerHTML=l.length?l.map(f=>{const [t,c]=dem(ocu(f));return `<div class="card rcard"><div><div><b style="font-size:20px">${esc(cod(f.de))} a ${esc(cod(f.a))}</b> <span class="tag ${c==="full"?"no":""}">${t}</span></div><div class="sub">${esc(f.de)} a ${esc(f.a)}<br>${esc(f.id)} en ${esc(f.av)}<br>Salida: ${fmt(f.fecha)}, ${esc(f.h)}</div></div><div class="pr"><div>Economy <b>${pp(f,"e")}</b></div><div>Business <b>${pp(f,"b")}</b></div><button data-id="${esc(f.id)}" ${lleno(f)?"disabled":""}>Reservar</button></div></div>`}).join(""):'<div class="card">No hay vuelos para esa búsqueda. Prueba otra fecha o ruta.</div>';
+}
+const PAGES=["disponibilidad","programados","reservar","flota","info","admin"],HOME=["top","ofertas","destinos","codigos"];
+function route(){
+ const h=location.hash.slice(1);
+ const p=h==="resultados"?"resultados":(PAGES.includes(h)&&!(h==="admin"&&$("admin").hidden))?h:"home";
+ document.body.dataset.p=p;document.body.classList.toggle("v",p==="resultados");$("resultados").hidden=p!=="resultados";
+ if(p==="resultados"){renderV();scrollTo(0,0);return}
+ if(p==="home"){const el=HOME.includes(h)?document.getElementById(h):null;if(el)el.scrollIntoView();else scrollTo(0,0);return}
+ scrollTo(0,0);if(p==="reservar")$("rb").focus();
+}
+addEventListener("hashchange",route);
+$("buscar").onclick=()=>{S.o=$("fo").value;S.d=$("fd").value;S.f=$("ff").value;const b=S.f||hoy(0);S.y=+b.slice(0,4);S.m=+b.slice(5,7)-1;if(cargando)return;cargando=true;$("carga").hidden=false;setTimeout(()=>{$("carga").hidden=true;cargando=false;location.hash="resultados";route()},5000)};
+function ir(h){if(cargando)return;cargando=true;$("carga").hidden=false;setTimeout(()=>{$("carga").hidden=true;cargando=false;location.hash=h;route()},5000)}
+document.querySelector("nav").onclick=e=>{const a=e.target.closest("a");if(!a)return;const h=a.getAttribute("href").slice(1);if(HOME.includes(h))return;e.preventDefault();ir(h)};
+const codH=c=>`<tr data-id="${esc(c.codigo)}"><td><input data-k="codigo" value="${esc(c.codigo)}" maxlength="30"></td><td><input data-k="pct" type="number" min="1" max="100" style="width:80px" value="${esc(c.pct)}"></td><td><input data-k="hasta" type="date" value="${esc(c.hasta)}"></td><td>${c.codigo?(c.hasta>=hoy(0)?"Activo":"Caducado"):"Nuevo"}</td><td style="white-space:nowrap"><button class="alt" data-act="save">Guardar</button> <button class="alt" data-act="del">Borrar</button></td></tr>`;
+$("ac").onclick=async e=>{
+ const b=e.target.closest("button[data-act]");if(!b)return;
+ const tr=b.closest("tr"),g=k=>tr.querySelector(`[data-k="${k}"]`).value.trim();
+ try{
+  if(b.dataset.act==="del"){if(!tr.dataset.id){tr.remove();return}if(b.textContent!=="¿Seguro?"){b.textContent="¿Seguro?";return}await db.doc("codigos/"+tr.dataset.id).delete();amsg("Código borrado.");return}
+  const id=g("codigo").toUpperCase().replace(/[^A-Z0-9_-]/g,"");
+  if(!id||!g("hasta")){amsg("Escribe el código y la fecha hasta la que vale.",1);return}
+  if(tr.dataset.id&&tr.dataset.id!==id)await db.doc("codigos/"+tr.dataset.id).delete();
+  await db.doc("codigos/"+id).set({codigo:id,pct:Math.min(100,Math.max(1,+g("pct")||0)),hasta:g("hasta")});amsg("Código "+id+" guardado.");
+ }catch(_){amsg("No se pudo guardar el código.",1)}
+};
+$("ncod").onclick=()=>$("ac").insertAdjacentHTML("beforeend",codH({codigo:"",pct:10,hasta:hoy(30)}));
+$("ofe").onclick=e=>{const b=e.target.closest("button[data-id]");if(!b)return;$("vuelo").value=b.dataset.id;location.hash="reservar";route()};
+$("cods").onclick=e=>{const b=e.target.closest("button[data-code]");if(!b)return;$("pc").value=b.dataset.code;location.hash="reservar";route()};
+$("vo").onchange=()=>{S.o=$("vo").value;renderV()};
+$("vd").onchange=()=>{S.d=$("vd").value;renderV()};
+$("vf").onchange=()=>{S.f=$("vf").value;if(S.f){S.y=+S.f.slice(0,4);S.m=+S.f.slice(5,7)-1}renderV()};
+$("vall").onclick=()=>{S.f="";renderV()};
+$("cprev").onclick=()=>{S.m--;if(S.m<0){S.m=11;S.y--}renderV()};
+$("cnext").onclick=()=>{S.m++;if(S.m>11){S.m=0;S.y++}renderV()};
+$("cal").onclick=e=>{const b=e.target.closest("button[data-d]");if(!b)return;S.f=S.f===b.dataset.d?"":b.dataset.d;renderV()};
+$("res").onclick=e=>{const b=e.target.closest("button[data-id]");if(!b)return;$("vuelo").value=b.dataset.id;location.hash="reservar";route()};
+$("disp").onclick=e=>{const b=e.target.closest("button[data-id]");if(!b)return;$("vuelo").value=b.dataset.id;$("reservar").scrollIntoView();$("rb").focus()};
+$("f").onsubmit=async e=>{
+ e.preventDefault();
+ const f=V.find(x=>x.id===$("vuelo").value);
+ if(!f){msg("Elige un vuelo con asientos libres.",1);return}
+ const k=$("clase").value==="Business"?"b":"e";
+ if(lib(f,k)<1){msg("No quedan asientos en "+$("clase").value+". Prueba con otra clase u otro vuelo.",1);return}
+ const c2="KLM-"+Math.random().toString(36).slice(2,8).toUpperCase();
+ const pc=$("pc").value.trim().toUpperCase();let pr=precio(f,k),cp=null;
+ if(pc){cp=C.find(x=>String(x.codigo).toUpperCase()===pc&&x.hasta>=hoy(0));if(!cp){msg("Ese código no existe o ha caducado.",1);return}pr=Math.round(pr*(1-(+cp.pct||0)/100))}
+ const body={codigo:c2,precio:pr,promo:cp?pc:"",roblox:$("rb").value.trim(),discord:$("dc").value.trim(),vuelo:f.id,ruta:f.de+" a "+f.a,fecha:fmt(f.fecha)+", "+f.h,clase:$("clase").value};
+ $("enviar").disabled=true;
+ const row={codigo:c2,roblox:body.roblox,vuelo:f.id,clase:k,precio:pr,promo:cp?pc:"",ts:Date.now()};
+ try{if(db)await db.doc("reservas/"+c2).set(row);else{R.push(row);render()}}
+ catch(_){msg("No se pudo guardar la reserva. Inténtalo de nuevo o pide acceso de colaborador al administrador.",1);$("enviar").disabled=false;return}
+ let ok=false;
+ try{const r=await fetch("/.netlify/functions/reserva",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});ok=r.ok}catch(_){}
+ msg("Reserva confirmada. Tu código es "+c2+" para el vuelo "+f.id+" ("+body.fecha+"). Precio: "+MON+pr+"."+(ok?"":" Aún no se avisa a Discord: conecta la función de Netlify."));
+ $("f").reset();$("enviar").disabled=false;
+};
+$("av").onclick=async e=>{
+ const b=e.target.closest("button[data-act]");if(!b)return;
+ const tr=b.closest("tr"),g=k=>tr.querySelector(`[data-k="${k}"]`).value.trim();
+ try{
+  if(b.dataset.act==="del"){
+   if(!tr.dataset.id){tr.remove();return}
+   if(b.textContent!=="¿Seguro?"){b.textContent="¿Seguro?";return}
+   await db.doc("vuelos/"+tr.dataset.id).delete();amsg("Vuelo borrado.");return}
+  const id=g("id").replace(/[^A-Za-z0-9_-]/g,"");
+  if(!id){amsg("Escribe el código del vuelo, por ejemplo KL101.",1);return}
+  const f={id,de:g("de"),a:g("a"),fecha:g("fecha"),h:g("h"),av:g("av"),ce:Math.max(0,+g("ce")||0),cb:Math.max(0,+g("cb")||0),pe:Math.max(0,+g("pe")||0),pb:Math.max(0,+g("pb")||0),of:Math.min(90,Math.max(0,+g("of")||0))};
+  if(tr.dataset.id&&tr.dataset.id!==id)await db.doc("vuelos/"+tr.dataset.id).delete();
+  await db.doc("vuelos/"+id).set(f);amsg("Vuelo "+id+" guardado.");
+ }catch(_){amsg("No se pudo guardar. Comprueba que tienes permiso de editor.",1)}
+};
+$("ar").onclick=async e=>{
+ const b=e.target.closest("button[data-c]");if(!b)return;
+ if(b.textContent!=="¿Seguro?"){b.textContent="¿Seguro?";return}
+ try{await db.doc("reservas/"+b.dataset.c).delete();amsg("Reserva "+b.dataset.c+" cancelada. El asiento queda libre.")}catch(_){amsg("No se pudo cancelar la reserva.",1)}
+};
+$("nuevo").onclick=()=>$("av").insertAdjacentHTML("beforeend",rowH({id:"",de:"",a:"",fecha:hoy(1),h:"18:00",av:"",ce:30,cb:8,pe:100,pb:300,of:0}));
+$("demo").onclick=async()=>{try{await Promise.all(DEF().map(f=>db.doc("vuelos/"+f.id).set(f)));amsg("Vuelos de ejemplo cargados. Ya puedes editarlos.")}catch(_){amsg("No se pudieron cargar los vuelos.",1)}};
+const TS=[...document.querySelectorAll("h1,.hero p,section h2,section>.wrap>.lead,#info .card b,#info .card p,footer p")].filter(e=>!e.closest("#admin"));
+const TD=TS.map(e=>e.textContent);
+let TX={};
+function applyT(){TS.forEach((e,i)=>{const k="t"+i;if(k in TX){e.textContent=TX[k];e.dataset.m=1}else if(e.dataset.m){e.textContent=TD[i];delete e.dataset.m}})}
+function buildT(){$("tx").innerHTML=TS.map((e,i)=>`<label for="t${i}">${esc(TD[i].slice(0,40))}</label><textarea id="t${i}" rows="${TD[i].length>80?3:1}">${esc(TX["t"+i]??TD[i])}</textarea>`).join("")}
+$("tsave").onclick=async()=>{const o={};TS.forEach((e,i)=>{const v=$("t"+i).value.trim();if(v&&v!==TD[i])o["t"+i]=v});try{await db.doc("textos/web").set(o);amsg("Textos guardados.")}catch(_){amsg("No se pudieron guardar los textos.",1)}};
+$("treset").onclick=async()=>{try{await db.doc("textos/web").set({});TX={};applyT();buildT();amsg("Textos originales restaurados.")}catch(_){amsg("No se pudo restaurar.",1)}};
+render();route();
+(async()=>{
+ const c=window.claude;if(!c)return;
+ try{const u=await c.use("user");adm=u?await u.canEdit():false;db=await c.use("db")}catch(_){}
+ if(!db){adm=false;return}
+ db.collection("vuelos").onSnapshot(s=>{const l=s.docs.map(d=>d.data()).sort(cmp);demo=!l.length;V=l.length?l:DEF();render()},()=>{});
+ db.collection("reservas").onSnapshot(s=>{R=s.docs.map(d=>d.data());render()},()=>{});
+ db.collection("codigos").onSnapshot(s=>{C=s.docs.map(d=>d.data());render()},()=>{});
+ db.doc("textos/web").onSnapshot(s=>{TX=s.exists?s.data():{};applyT();if($("tx").children.length&&document.activeElement.tagName!=="TEXTAREA")buildT()},()=>{});
+})();
+</script>
+</body>
+</html>
